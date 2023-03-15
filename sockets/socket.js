@@ -18,7 +18,6 @@ io.on('connection', (client) =>  {
 
     // Escuchar del cliente el mensaje-personal
     client.on('mensaje-personal', async( payload ) => {
-        // TODO: Grabar mensaje
         await grabarMensaje( payload );
         io.to( payload.para ).emit('mensaje-personal', payload );
     })
@@ -27,14 +26,5 @@ io.on('connection', (client) =>  {
     client.on('disconnect', () => {
         usuarioDesconectado(uid);
     });
-
-    
-
-    
-    // client.on('mensaje', ( payload ) => {
-    //     console.log('Mensaje', payload);
-    //     io.emit( 'mensaje', { admin: 'Nuevo mensaje' } );
-    // });
-
 
 });
